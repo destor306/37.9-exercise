@@ -14,6 +14,15 @@ const TodoList = ()=>{
     const removeTask =(id) =>{
         setTask(tasks => tasks.filter(task=> task.id !== id));
     }
+    const editTask = (id, editTask) =>{
+        setTask(tasks => tasks.map(
+            task => task.id ===id ? {...task, task: editTask}: task))
+    }
+    const completeTask = (id) =>{
+        setTask(tasks => tasks.map(
+            task=> task.id ===id ?{...task, completed : true} : task
+        ))
+    }
     return(
         <div>
             <h3>TodoList</h3>
@@ -21,10 +30,13 @@ const TodoList = ()=>{
             {
             task.map(({id, task})=>
             <Todo 
+            completed={false}
             key={id}
             id={id}
             task={task}
             remove={removeTask}
+            edit={editTask}
+            complete={completeTask}
             />
             )}
         </div>
