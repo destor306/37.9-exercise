@@ -4,10 +4,7 @@ import Box from "./Box";
 import {v4 as uuid} from "uuid"
 
 const BoxList = ()=>{
-    const INITIAL_STATE=[
-        {id: uuid(), width: 5,  height: 5, backgroundColor: 'red'},
-    ]
-
+    
     const [boxes, setBoxes] = useState([]);
     const addBox = (newBox) =>{
         setBoxes(boxes => [...boxes, {...newBox, id: uuid()}])
